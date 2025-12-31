@@ -2,14 +2,14 @@
 /**
  * Plugin Name: Sawah Register
  * Description: Clean, theme-aware signup/login/profile plugin with Google & Facebook login, custom pages, and full color controls.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Sawah Solutions
  * Text Domain: sawah-register
  */
 
 if (!defined('ABSPATH')) exit;
 
-define('SR_VERSION', '1.0.1');
+define('SR_VERSION', '1.0.2');
 define('SR_PATH', plugin_dir_path(__FILE__));
 define('SR_URL', plugin_dir_url(__FILE__));
 

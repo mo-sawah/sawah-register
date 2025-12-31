@@ -78,10 +78,20 @@ class SR_Forms {
     ], is_ssl());
 
     if (is_wp_error($user)) {
-      $u = SR_Pages::get_page_url('login');
-      $msg = wp_strip_all_tags($user->get_error_message());
-      wp_safe_redirect(add_query_arg('sr_error', rawurlencode($msg), $u));
-      exit;
+    $msg = wp_strip_all_tags($user->get_error_message());
+
+    $return = !empty($_POST['sr_modal_return'])
+        ? esc_url_raw(wp_unslash($_POST['sr_modal_return']))
+        : SR_Pages::get_page_url('login');
+
+    if (!$return) $return = home_url('/');
+
+    wp_safe_redirect(add_query_arg([
+        'sr_auth' => '1',
+        'sr_tab'  => 'login',
+        'sr_error'=> rawurlencode($msg),
+    ], $return));
+    exit;
     }
 
     wp_safe_redirect(self::resolve_redirect_after_login($redirect_to));
@@ -224,11 +234,26 @@ class SR_Forms {
   }
 
   private static function redir_err($page_key, $msg) {
+
+    // ✅ If request came from the header modal, return to the same page and reopen modal
+    if (!empty($_POST['sr_modal_return'])) {
+        $return = esc_url_raw(wp_unslash($_POST['sr_modal_return']));
+        if ($return) {
+        wp_safe_redirect(add_query_arg([
+            'sr_auth' => '1',
+            'sr_tab'  => ($page_key === 'signup' ? 'signup' : 'login'),
+            'sr_error'=> rawurlencode($msg),
+        ], $return));
+        exit;
+        }
+    }
+
+    // Default behavior: redirect to our dedicated page
     $u = SR_Pages::get_page_url($page_key);
     if (!$u) wp_die(esc_html($msg));
     wp_safe_redirect(add_query_arg('sr_error', rawurlencode($msg), $u));
     exit;
-  }
+    }
 
   public static function render($view) {
     $view = sanitize_text_field($view);

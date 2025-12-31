@@ -77,6 +77,12 @@ class SR_Settings {
         'app_id' => '',
         'app_secret' => '',
       ],
+      'header_auth' => [
+        'enabled'   => 1,
+        'image_url' => '',
+        'grad_from' => '#2563eb',
+        'grad_to'   => '#38bdf8',
+        ],
     ];
 
     $merged = array_replace_recursive($defaults, $opt);
@@ -149,6 +155,11 @@ class SR_Settings {
     $out['facebook']['enabled'] = !empty($input['facebook']['enabled']) ? 1 : 0;
     $out['facebook']['app_id'] = isset($input['facebook']['app_id']) ? sanitize_text_field($input['facebook']['app_id']) : '';
     $out['facebook']['app_secret'] = isset($input['facebook']['app_secret']) ? sanitize_text_field($input['facebook']['app_secret']) : '';
+
+    $out['header_auth']['enabled'] = !empty($input['header_auth']['enabled']) ? 1 : 0;
+    $out['header_auth']['image_url'] = !empty($input['header_auth']['image_url']) ? esc_url_raw($input['header_auth']['image_url']) : '';
+    $out['header_auth']['grad_from'] = !empty($input['header_auth']['grad_from']) ? sanitize_hex_color($input['header_auth']['grad_from']) : '#2563eb';
+    $out['header_auth']['grad_to']   = !empty($input['header_auth']['grad_to']) ? sanitize_hex_color($input['header_auth']['grad_to']) : '#38bdf8';
 
     return $out;
   }
@@ -263,6 +274,39 @@ class SR_Settings {
             <th scope="row">App Secret</th>
             <td><input type="text" class="regular-text" name="<?php echo esc_attr(self::OPT); ?>[facebook][app_secret]" value="<?php echo esc_attr($opt['facebook']['app_secret'] ?? ''); ?>"></td>
           </tr>
+        </table>
+
+        <hr />
+        <h2 class="title">Header Auth Popup</h2>
+        <table class="form-table" role="presentation">
+        <tr>
+            <th scope="row">Enable header popup</th>
+            <td>
+            <label>
+                <input type="checkbox" name="<?php echo esc_attr(self::OPT); ?>[header_auth][enabled]" value="1" <?php checked(!empty($opt['header_auth']['enabled'])); ?> />
+                Enabled
+            </label>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Popup image URL</th>
+            <td>
+            <input type="text" class="regular-text" name="<?php echo esc_attr(self::OPT); ?>[header_auth][image_url]" value="<?php echo esc_attr($opt['header_auth']['image_url'] ?? ''); ?>" placeholder="https://...">
+            <p class="description">Right-side image panel background.</p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Gradient from</th>
+            <td>
+            <input type="text" class="sr-color" name="<?php echo esc_attr(self::OPT); ?>[header_auth][grad_from]" value="<?php echo esc_attr($opt['header_auth']['grad_from'] ?? '#2563eb'); ?>">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Gradient to</th>
+            <td>
+            <input type="text" class="sr-color" name="<?php echo esc_attr(self::OPT); ?>[header_auth][grad_to]" value="<?php echo esc_attr($opt['header_auth']['grad_to'] ?? '#38bdf8'); ?>">
+            </td>
+        </tr>
         </table>
 
         <hr />

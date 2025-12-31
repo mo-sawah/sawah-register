@@ -5,6 +5,7 @@ require_once SR_PATH . 'includes/class-sr-settings.php';
 require_once SR_PATH . 'includes/class-sr-pages.php';
 require_once SR_PATH . 'includes/class-sr-auth.php';
 require_once SR_PATH . 'includes/class-sr-forms.php';
+require_once SR_PATH . 'includes/class-sr-header-auth-modal.php';
 
 class SR_Plugin {
   private static $instance = null;
@@ -19,6 +20,7 @@ class SR_Plugin {
     SR_Pages::init();
     SR_Auth::init();
     SR_Forms::init();
+    SR_Header_Auth_Modal::init();
 
     add_action('wp_enqueue_scripts', [$this, 'enqueue_frontend']);
     add_action('admin_enqueue_scripts', [$this, 'enqueue_admin']);
@@ -47,23 +49,35 @@ class SR_Plugin {
   }
 
   public function enqueue_frontend() {
+    $opt = SR_Settings::get();
+    $header_on = !empty($opt['header_auth']['enabled']);
+
+    // Header modal needs these site-wide
+    if ($header_on) {
+        wp_enqueue_style(
+        'sr-poppins',
+        'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap',
+        [],
+        null
+        );
+
+        wp_enqueue_style(
+        'sr-fontawesome',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css',
+        [],
+        '6.5.0'
+        );
+
+        wp_enqueue_style('sawah-register-auth-modal', SR_URL . 'assets/css/sr-auth-modal.css', ['sr-poppins','sr-fontawesome'], SR_VERSION);
+        wp_enqueue_script('sawah-register-auth-modal', SR_URL . 'assets/js/sr-auth-modal.js', [], SR_VERSION, true);
+
+        wp_localize_script('sawah-register-auth-modal', 'SR_AUTH_MODAL', [
+        'profileUrl' => SR_Pages::get_page_url('profile') ?: home_url('/'),
+        ]);
+    }
+
+    // Keep your original page-specific assets only for SR pages
     if (!SR_Pages::is_sr_page()) return;
-
-    // Poppins (Google Fonts)
-    wp_enqueue_style(
-      'sr-poppins',
-      'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap',
-      [],
-      null
-    );
-
-    // Font Awesome
-    wp_enqueue_style(
-      'sr-fontawesome',
-      'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css',
-      [],
-      '6.5.0'
-    );
 
     wp_enqueue_style('sawah-register-frontend', SR_URL . 'assets/css/sr-frontend.css', ['sr-poppins','sr-fontawesome'], SR_VERSION);
     wp_enqueue_script('sawah-register-frontend', SR_URL . 'assets/js/sr-frontend.js', ['jquery'], SR_VERSION, true);
@@ -72,10 +86,11 @@ class SR_Plugin {
     wp_add_inline_style('sawah-register-frontend', SR_Settings::build_inline_css($vars));
 
     wp_localize_script('sawah-register-frontend', 'SR_VARS', [
-      'ajax' => admin_url('admin-ajax.php'),
-      'nonce' => wp_create_nonce('sr_ajax'),
+        'ajax' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('sr_ajax'),
     ]);
-  }
+    }
+
 
   public function enqueue_admin($hook) {
     if ($hook !== 'settings_page_sawah-register') return;

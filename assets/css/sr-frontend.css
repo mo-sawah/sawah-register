@@ -15,7 +15,7 @@
 .sr-card {
   background: var(--sr-card);
   border: 1px solid var(--sr-border);
-  border-radius: 16px;
+  border-radius: 8px;
   box-shadow: 0 16px 36px var(--sr-shadow);
   overflow: hidden;
 }
@@ -31,7 +31,7 @@
 .sr-logo {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,7 +56,7 @@
 .sr-alert {
   margin: 12px 0 0;
   padding: 10px 12px;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid var(--sr-border);
   font-size: 13px;
   background: var(--sr-card);
@@ -84,7 +84,7 @@
 .sr-field input {
   width: 100%;
   padding: 12px 12px;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid var(--sr-border);
   background: color-mix(in srgb, var(--sr-card) 88%, var(--sr-bg));
   color: var(--sr-text);
@@ -134,7 +134,7 @@
   justify-content: center;
   gap: 10px;
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid var(--sr-border);
   text-decoration: none;
   font-weight: 700;
@@ -163,7 +163,7 @@
 .sr-ic {
   width: 22px;
   height: 22px;
-  border-radius: 8px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -201,7 +201,7 @@
 .sr-wrap--app {
   width: 100%;
   padding: 18px;
-  background: var(--sr-bg);
+  background: 0;
 }
 
 .sr-app {
@@ -217,7 +217,7 @@
 .sr-side {
   background: var(--sr-sidebar-bg);
   border: 1px solid var(--sr-border);
-  border-radius: 18px;
+  border-radius: 9px;
   box-shadow: 0 16px 36px var(--sr-shadow);
   overflow: hidden;
   position: sticky;
@@ -262,7 +262,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px 10px;
-  border-radius: 12px;
+  border-radius: 6px;
   text-decoration: none;
   color: var(--sr-sidebar-text);
   font-weight: 600;
@@ -299,7 +299,7 @@
 .sr-userAvatar {
   width: 38px;
   height: 38px;
-  border-radius: 12px;
+  border-radius: 6px;
   object-fit: cover;
   border: 1px solid var(--sr-border);
 }
@@ -329,7 +329,7 @@
   justify-content: center;
   gap: 8px;
   padding: 10px 12px;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid var(--sr-border);
   color: var(--sr-sidebar-text);
   text-decoration: none;
@@ -365,7 +365,7 @@
   background: var(--sr-topbar-chip-bg);
   border-radius: 999px;
   padding: 10px 14px;
-  max-width: 560px;
+  max-width: 400px;
 }
 .sr-search i {
   opacity: 0.9;
@@ -388,17 +388,17 @@
   gap: 10px;
 }
 .sr-date {
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: var(--sr-topbar-chip-bg);
-  font-weight: 700;
+  padding: 0;
+  border-radius: 9990px;
+  background: 0;
+  font-weight: 400;
   font-size: 12px;
   white-space: nowrap;
 }
 .sr-iconBtn {
-  width: 40px;
+  width: 20px;
   height: 40px;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 0;
   background: var(--sr-icon-bg);
   color: var(--sr-topbar-text);
@@ -431,7 +431,7 @@
 .sr-cardBlock {
   background: var(--sr-card);
   border: 1px solid var(--sr-border);
-  border-radius: 18px;
+  border-radius: 9px;
   box-shadow: 0 16px 36px var(--sr-shadow);
   padding: 14px;
   margin-bottom: 14px;
@@ -450,7 +450,7 @@
 .sr-heroAvatar {
   width: 54px;
   height: 54px;
-  border-radius: 18px;
+  border-radius: 9px;
   object-fit: cover;
   border: 1px solid var(--sr-border);
 }
@@ -487,7 +487,7 @@
 }
 @media (min-width: 980px) {
   .sr-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
   .sr-cardBlock[data-sr-card="social"],
   .sr-cardBlock[data-sr-card="security"] {
@@ -521,7 +521,7 @@
   border: 1px solid var(--sr-border);
   background: transparent;
   color: var(--sr-text);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 8px 10px;
   font-weight: 800;
   font-size: 12px;
@@ -572,7 +572,7 @@
 .sr-field input {
   width: 100%;
   padding: 11px 12px;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid var(--sr-border);
   background: color-mix(in srgb, var(--sr-card) 88%, var(--sr-bg));
   color: var(--sr-text);
@@ -594,7 +594,7 @@
   gap: 10px;
   align-items: flex-start;
   padding: 10px 12px;
-  border-radius: 14px;
+  border-radius: 7px;
   border: 1px dashed color-mix(in srgb, var(--sr-border) 70%, transparent);
   color: var(--sr-muted);
   font-size: 12px;
@@ -638,7 +638,7 @@
 .sr-listItem {
   display: block;
   padding: 12px 12px;
-  border-radius: 14px;
+  border-radius: 7px;
   border: 1px solid var(--sr-border);
   text-decoration: none;
   color: var(--sr-text);
@@ -666,6 +666,6 @@
     top: auto;
   }
   .sr-topbar {
-    border-radius: 16px;
+    border-radius: 8px;
   }
 }
