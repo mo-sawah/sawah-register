@@ -114,7 +114,7 @@ body.s-dark .srh__tabs {
 
 .srh__tab {
   flex: 1;
-  padding: 10px 12px;
+  padding: 2px 12px;
   border-radius: 14px;
   border: 0;
   cursor: pointer;
@@ -206,12 +206,14 @@ body.s-dark .srh__field input {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  width: 36px;
+  width: 10px;
   height: 36px;
-  border-radius: 12px;
+  border-radius: 0px;
   border: 0;
-  background: rgba(0, 0, 0, 0.06);
+  background: 0;
   cursor: pointer;
+  color: #818181a3;
+  box-shadow: none;
 }
 body.s-dark .srh__pwBtn {
   background: rgba(255, 255, 255, 0.08);
@@ -262,7 +264,7 @@ body.s-dark .srh__check {
   justify-content: center;
   gap: 10px;
   width: 100%;
-  padding: 12px 14px;
+  padding: 2px 14px;
   border-radius: 14px;
   font-weight: 900;
   font-size: 13px;

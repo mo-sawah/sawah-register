@@ -165,8 +165,8 @@ class SR_Header_Auth_Modal {
 
         <div class="srh__panel srh__panel--right" <?php echo $img ? 'style="background-image:url('.esc_url($img).')"' : ''; ?>>
           <div class="srh__quote">
-            <div class="srh__quoteTxt">“Clean, premium login experience — fast, simple, and secure.”</div>
-            <div class="srh__quoteBy">Sawah Register · UI</div>
+            <div class="srh__quoteTxt">“Get the top notification about misinformation directly to your inbox.”</div>
+            <div class="srh__quoteBy">Disinformation Commission</div>
           </div>
           <div class="srh__navArrows">
             <button type="button" class="srh__arrow" data-srh-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
