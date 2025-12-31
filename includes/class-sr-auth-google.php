@@ -75,7 +75,8 @@ class SR_Auth_Google {
     $st = get_transient('sr_google_state_' . $state);
     delete_transient('sr_google_state_' . $state);
 
-    $return_url = (!empty($st['return'])) ? esc_url_raw($st['return']) : $return_fallback;
+    $profile = SR_Pages::get_page_url('profile');
+    $return_url = $profile ? $profile : $return_fallback;
 
     if (empty($opt['google']['enabled']) || empty($opt['google']['client_id']) || empty($opt['google']['client_secret'])) {
       wp_safe_redirect(add_query_arg([

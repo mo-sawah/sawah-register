@@ -364,7 +364,7 @@
   gap: 10px;
   background: var(--sr-topbar-chip-bg);
   border-radius: 999px;
-  padding: 10px 14px;
+  padding: 2px 14px;
   max-width: 400px;
 }
 .sr-search i {
