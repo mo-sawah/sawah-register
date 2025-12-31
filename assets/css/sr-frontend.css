@@ -518,17 +518,18 @@
 .sr-editBtn,
 .sr-saveBtn,
 .sr-cancelBtn {
-  border: 1px solid var(--sr-border);
+  border: 0;
   background: transparent;
-  color: var(--sr-text);
-  border-radius: 6px;
-  padding: 8px 10px;
+  color: #000;
+  border-radius: 0px;
+  padding: 5px;
   font-weight: 800;
   font-size: 12px;
   cursor: pointer;
   display: inline-flex;
   gap: 8px;
   align-items: center;
+  box-shadow: none;
 }
 .sr-saveBtn {
   background: var(--sr-primary);
@@ -667,5 +668,13 @@
   }
   .sr-topbar {
     border-radius: 8px;
+  }
+
+  .sr-date {
+    display: none;
+  }
+
+  .sr-search {
+    padding: 2px 14px;
   }
 }

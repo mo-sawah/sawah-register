@@ -38,14 +38,14 @@
 
 .srh__back {
   position: absolute;
-  left: 18px;
-  top: 18px;
+  right: 18px;
+  top: 22px;
   z-index: 4;
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.12);
+  width: 15px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.12);
   color: #fff;
   display: flex;
   align-items: center;
@@ -264,7 +264,7 @@ body.s-dark .srh__check {
   justify-content: center;
   gap: 10px;
   width: 100%;
-  padding: 2px 14px;
+  padding: 2px 0px !important;
   border-radius: 14px;
   font-weight: 900;
   font-size: 13px;
@@ -350,7 +350,7 @@ body.s-dark .srh__divider span {
 }
 
 .srh__navArrows {
-  display: flex;
+  display: none;
   gap: 10px;
 }
 .srh__arrow {
