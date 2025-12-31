@@ -19,10 +19,22 @@ class SR_Auth {
     add_rewrite_rule('^sawah-auth/(google|facebook)/callback/?$', 'index.php?sr_provider=$matches[1]&sr_action=callback', 'top');
   }
 
-  public static function start_url($provider, $redirect_to = '') {
-    $u = home_url('/sawah-auth/' . rawurlencode($provider) . '/');
-    if (!empty($redirect_to)) $u = add_query_arg('redirect_to', rawurlencode($redirect_to), $u);
-    return $u;
+  public static function start_url(string $provider, string $return): string {
+
+    // Normalize provider
+    $provider = strtolower(trim($provider));
+
+    if ($provider === 'google') {
+      return SR_Auth_Google::start_url($return);
+    }
+
+    if ($provider === 'facebook') {
+      // Later when you implement facebook:
+      // return SR_Auth_Facebook::start_url($return);
+      return home_url('/');
+    }
+
+    return home_url('/');
   }
 
   public static function callback_url($provider) {

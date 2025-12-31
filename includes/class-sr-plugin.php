@@ -6,6 +6,7 @@ require_once SR_PATH . 'includes/class-sr-pages.php';
 require_once SR_PATH . 'includes/class-sr-auth.php';
 require_once SR_PATH . 'includes/class-sr-forms.php';
 require_once SR_PATH . 'includes/class-sr-header-auth-modal.php';
+require_once SR_PATH . 'includes/class-sr-auth-google.php';
 
 class SR_Plugin {
   private static $instance = null;
@@ -21,6 +22,7 @@ class SR_Plugin {
     SR_Auth::init();
     SR_Forms::init();
     SR_Header_Auth_Modal::init();
+    SR_Auth_Google::init();
 
     add_action('wp_enqueue_scripts', [$this, 'enqueue_frontend']);
     add_action('admin_enqueue_scripts', [$this, 'enqueue_admin']);

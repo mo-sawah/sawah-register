@@ -241,7 +241,9 @@ class SR_Settings {
                 <input type="checkbox" name="<?php echo esc_attr(self::OPT); ?>[google][enabled]" value="1" <?php checked(!empty($opt['google']['enabled'])); ?> />
                 Enabled
               </label>
-              <p class="description">OAuth Redirect URI: <code><?php echo esc_html($google_cb); ?></code></p>
+              <p class="description">
+                Google Redirect URI: <code><?php echo esc_html(SR_Auth_Google::callback_url()); ?></code>
+              </p>
             </td>
           </tr>
           <tr>
